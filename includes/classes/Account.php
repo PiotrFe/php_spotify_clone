@@ -15,8 +15,6 @@ class Account
         $pw = md5($password);
         $query = mysqli_query($this->con, "SELECT * FROM users WHERE username='$username' AND password='$pw'");
 
-        echo "SELECT * FROM users WHERE username='$username' AND password='$pw'";
-
         if (mysqli_num_rows($query) == 1) {
             return true;
         } else {
@@ -53,8 +51,7 @@ class Account
     private function insertUserDetails($username, $firstName, $lastName, $email, $password)
     {
         $encryptedPw = md5($password);
-        var_dump($password);
-        var_dump($encryptedPw);
+
         $profilePic = "assets/images/profile-pics/head_emerald.png";
         $date = date("Y-m-d");
 

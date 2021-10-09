@@ -5,9 +5,6 @@ if (isset($_POST['loginButton'])) {
     $username = $_POST['loginUsername'];
     $password = $_POST['loginPassword'];
 
-    var_dump($password);
-    var_dump(md5($password));
-
     // Login function
     $result = $account->login($username, $password);
 
