@@ -1,3 +1,30 @@
+<?php
+$songQuery = mysqli_query($con, "SELECT id FROM songs ORDER BY RAND() LIMIT 10");
+$resultArray = array();
+
+while ($row = mysqli_fetch_array($songQuery)) {
+    array_push($resultArray, $row["id"]);
+}
+
+$jsonArray = json_encode($resultArray);
+
+?>
+
+<script>
+    $(document).ready(function() {
+        currentPlayList = <?php echo $jsonArray ?>;
+        audioElement = new Audio();
+        setTrack(currentPlayList[0], currentPlayList, false);
+    });
+
+    function setTrack(trackId, newPlaylist, play) {
+        if (play) {
+            audioElement.play();
+        }
+
+    }
+</script>
+
 <div id="nowPlayingBar">
     <div id="nowPlayingLeft">
         <div class="content">
